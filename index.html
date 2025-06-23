@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="pt-br" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Batalha das Moléculas - Desafios de Estequiometria</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.0.2/marked.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#DC2626', // Vermelho
+                        secondary: '#2563EB', // Azul
+                        accent: '#10B981', // Verde-limão
+                        warning: '#F59E0B', // Amarelo
+                        surface: '#F8FAFC', // Cinza claro
+                        dark: '#181818'
+                    },
+                    animation: {
+                        'bounce-slow': 'bounce 2s infinite',
+                        'pulse-slow': 'pulse 3s infinite',
+                        'attack': 'attack 0.5s ease-in-out',
+                        'explosion': 'explosion 0.8s ease-out'
+                    },
+                    keyframes: {
+                        attack: {
+                            '0%': { transform: 'scale(1)' },
+                            '50%': { transform: 'scale(1.2) rotate(5deg)' },
+                            '100%': { transform: 'scale(1)' }
+                        },
+                        explosion: {
+                            '0%': { transform: 'scale(0)', opacity: '1' },
+                            '50%': { transform: 'scale(1.5)', opacity: '0.8' },
+                            '100%': { transform: 'scale(2)', opacity: '0' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-surface dark:bg-dark text-gray-900 dark:text-gray-100 transition-colors duration-300">
+    <!-- Header -->
+    <header class="bg-primary dark:bg-gray-800 shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <h1 class="text-2xl md:text-3xl font-bold text-white mb-4 md:mb-0">
+                    ⚛️ Batalha das Moléculas
+                    <span class="block text-sm font-normal opacity-90">Desafios de Estequiometria</span>
+                </h1>
+                <nav class="w-full md:w-auto">
+                    <ul class="flex flex-wrap justify-center md:justify-end gap-2 md:gap-4 text-sm md:text-base">
+                        <li><a href="#introducao" class="text-white hover:text-accent transition-colors px-2 py-1 rounded">Introdução</a></li>
+                        <li><a href="#historico" class="text-white hover:text-accent transition-colors px-2 py-1 rounded">História</a></li>
+                        <li><a href="#aplicacoes" class="text-white hover:text-accent transition-colors px-2 py-1 rounded">Aplicações</a></li>
+                        <li><a href="#jogo" class="text-white hover:text-accent transition-colors px-2 py-1 rounded font-bold">🎮 Jogo</a></li>
+                        <li><a href="#experimentos" class="text-white hover:text-accent transition-colors px-2 py-1 rounded">Experimentos</a></li>
+                        <li><a href="#exercicios" class="text-white hover:text-accent transition-colors px-2 py-1 rounded">Quiz</a></li>
+                        <li><a href="#conexoes" class="text-white hover:text-accent transition-colors px-2 py-1 rounded">Conexões</a></li>
+                        <li><a href="#curiosidades" class="text-white hover:text-accent transition-colors px-2 py-1 rounded">Curiosidades</a></li>
+                        <li><a href="#contato" class="text-white hover:text-accent transition-colors px-2 py-1 rounded">Contato</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Seção Introdução -->
+        <section id="introducao" class="py-16 bg-gradient-to-br from-secondary/10 to-primary/10">
+            <div class="container mx-auto px-4">
+                <h2 class="text-4xl font-bold text-center mb-12 text-primary dark:text-accent">Introdução à Estequiometria</h2>
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <div class="space-y-6">
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg">
+                            <h3 class="text-2xl font-semibold mb-4 text-secondary">🧪 O que é Estequiometria?</h3>
+                            <p class="text-gray-700 dark:text-gray-300">
+                                A estequiometria é o ramo da química que estuda as relações quantitativas entre reagentes e produtos em reações químicas. É como uma receita química que nos diz exatamente quanto de cada ingrediente precisamos para obter o resultado desejado.
+                            </p>
+                        </div>
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg">
+                            <h3 class="text-2xl font-semibold mb-4 text-secondary">⚖️ Importância das Proporções</h3>
+                            <p class="text-gray-700 dark:text-gray-300">
+                                As proporções corretas entre reagentes e produtos são fundamentais para maximizar o rendimento das reações e evitar desperdícios. Na indústria, isso significa economia e eficiência.
+                            </p>
+                        </div>
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg">
+                            <h3 class="text-2xl font-semibold mb-4 text-secondary">🔢 Conceitos Fundamentais</h3>
+                            <ul class="space-y-2 text-gray-700 dark:text-gray-300">
+                                <li><strong>Mol:</strong> Unidade de quantidade de matéria (6,022 × 10²³ partículas)</li>
+                                <li><strong>Massa Molar:</strong> Massa de um mol de substância (g/mol)</li>
+                                <li><strong>Volume de Gases:</strong> 22,4 L por mol em CNTP</li>
+                                <li><strong>Reagente Limitante:</strong> Reagente que se esgota primeiro</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg">
+                        <h3 class="text-2xl font-semibold mb-4 text-center text-accent">Exemplo: Formação da Água</h3>
+                        <div class="text-center space-y-4">
+                            <div class="text-2xl font-mono bg-gray-100 dark:bg-gray-700 p-4 rounded">
+                                2H₂ + O₂ → 2H₂O
+                            </div>
+                            <div class="grid grid-cols-3 gap-4 text-sm">
+                                <div class="bg-blue-100 dark:bg-blue-900 p-3 rounded">
+                                    <div class="font-bold">H₂</div>
+                                    <div>2 mols</div>
+                                    <div>4 g</div>
+                                </div>
+                                <div class="bg-red-100 dark:bg-red-900 p-3 rounded">
+                                    <div class="font-bold">O₂</div>
+                                    <div>1 mol</div>
+                                    <div>32 g</div>
+                                </div>
+                                <div class="bg-green-100 dark:bg-green-900 p-3 rounded">
+                                    <div class="font-bold">H₂O</div>
+                                    <div>2 mols</div>
+                                    <div>36 g</div>
+                                </div>
+                            </div>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">
+                                Lei da Conservação da Massa: 4g + 32g = 36g ✓
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Contexto Histórico -->
+        <section id="historico" class="py-16">
+            <div class="container mx-auto px-4">
+                <h2 class="text-4xl font-bold text-center mb-12 text-primary dark:text-accent">Contexto Histórico</h2>
+                <div class="max-w-4xl mx-auto">
+                    <div class="bg-white dark:bg-gray-800 rounded-lg p-8 shadow-lg">
+                        <div class="space-y-8">
+                            <div class="flex items-start space-x-4">
+                                <div class="bg-primary text-white rounded-full w-16 h-16 flex items-center justify-center text-xl font-bold">1789</div>
+                                <div>
+                                    <h3 class="text-xl font-semibold text-secondary">Antoine Lavoisier</h3>
+                                    <p class="text-gray-700 dark:text-gray-300">Estabeleceu a Lei da Conservação da Massa: "Na natureza nada se cria, nada se perde, tudo se transforma"</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-4">
+                                <div class="bg-secondary text-white rounded-full w-16 h-16 flex items-center justify-center text-xl font-bold">1799</div>
+                                <div>
+                                    <h3 class="text-xl font-semibold text-primary">Joseph Proust</h3>
+                                    <p class="text-gray-700 dark:text-gray-300">Formulou a Lei das Proporções Definidas: compostos químicos sempre contêm os mesmos elementos nas mesmas proporções</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-4">
+                                <div class="bg-accent text-white rounded-full w-16 h-16 flex items-center justify-center text-xl font-bold">XX</div>
+                                <div>
+                                    <h3 class="text-xl font-semibold text-accent">Era Moderna</h3>
+                                    <p class="text-gray-700 dark:text-gray-300">Desenvolvimento de cálculos de rendimento e eficiência industrial, aplicações em larga escala</p>
+                                </div>
+                            </div>
+                        </div>
+                        <blockquote class="mt-8 p-6 bg-gray-100 dark:bg-gray-700 rounded-lg border-l-4 border-primary">
+                            <p class="text-lg italic">"Na natureza nada se cria, nada se perde, tudo se transforma"</p>
+                            <cite class="block mt-2 text-right text-primary font-semibold">- Antoine Lavoisier</cite>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Aplicações Práticas -->
+        <section id="aplicacoes" class="py-16 bg-gray-50 dark:bg-gray-900">
+            <div class="container mx-auto px-4">
+                <h2 class="text-4xl font-bold text-center mb-12 text-primary dark:text-accent">Aplicações Práticas</h2>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg text-center">
+                        <div class="text-4xl mb-4">🏭</div>
+                        <h3 class="text-xl font-semibold mb-3 text-secondary">Indústria Química</h3>
+                        <p class="text-gray-600 dark:text-gray-400">Planejamento de produção, otimização de custos e maximização de rendimento</p>
+                    </div>
+                    <div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg text-center">
+                        <div class="text-4xl mb-4">🔥</div>
+                        <h3 class="text-xl font-semibold mb-3 text-primary">Combustão</h3>
+                        <p class="text-gray-600 dark:text-gray-400">Controle de emissões, eficiência energética e combustão completa</p>
+                    </div>
+                    <div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg text-center">
+                        <div class="text-4xl mb-4">🌱</div>
+                        <h3 class="text-xl font-semibold mb-3 text-accent">Meio Ambiente</h3>
+                        <p class="text-gray-600 dark:text-gray-400">Tratamento de poluentes, purificação de água e controle ambiental</p>
+                    </div>
+                    <div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg text-center">
+                        <div class="text-4xl mb-4">💊</div>
+                        <h3 class="text-xl font-semibold mb-3 text-warning">Farmácia</h3>
+                        <p class="text-gray-600 dark:text-gray-400">Dosagem precisa de reagentes na síntese de medicamentos</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Jogo Interativo -->
+        <section id="jogo" class="py-16 bg-gradient-to-br from-primary/10 to-secondary/10">
+            <div class="container mx-auto px-4">
+                <h2 class="text-4xl font-bold text-center mb-12 text-primary dark:text-accent">🎮 Batalha das Moléculas</h2>
+                
+                <div class="max-w-6xl mx-auto">
+                    <!-- Painel de Status do Jogo -->
+                    <div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg mb-8">
+                        <div class="grid md:grid-cols-3 gap-6">
+                            <div class="text-center">
+                                <h3 class="text-lg font-semibold mb-2">⚡ Sua Energia</h3>
+                                <div class="w-full bg-gray-200 rounded-full h-4">
+                                    <div id="playerHealth" class="bg-accent h-4 rounded-full transition-all duration-500" style="width: 100%"></div>
+                                </div>
+                                <span id="playerHealthText" class="text-sm font-bold">100/100</span>
+                            </div>
+                            <div class="text-center">
+                                <h3 class="text-lg font-semibold mb-2">🎯 Pontuação</h3>
+                                <div class="text-3xl font-bold text-primary dark:text-accent" id="gameScore">0</div>
+                            </div>
+                            <div class="text-center">
+                                <h3 class="text-lg font-semibold mb-2">🤖 IA Inimiga</h3>
+                                <div class="w-full bg-gray-200 rounded-full h-4">
+                                    <div id="enemyHealth" class="bg-primary h-4 rounded-full transition-all duration-500" style="width: 100%"></div>
+                                </div>
+                                <span id="enemyHealthText" class="text-sm font-bold">100/100</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid lg:grid-cols-2 gap-8">
+                        <!-- Área Principal do Jogo -->
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg">
+                            <div id="gameArea">
+                                <div id="gameStart" class="text-center space-y-6">
+                                    <h3 class="text-2xl font-bold text-secondary">Escolha o Nível de Dificuldade</h3>
+                                    <div class="space-y-3">
+                                        <button onclick="startGame('basico')" class="w-full bg-accent hover:bg-accent/80 text-white py-3 px-6 rounded-lg font-semibold transition-colors">
+                                            🟢 Básico - Reações 1:1
+                                        </button>
+                                        <button onclick="startGame('intermediario')" class="w-full bg-warning hover:bg-warning/80 text-white py-3 px-6 rounded-lg font-semibold transition-colors">
+                                            🟡 Intermediário - Múltiplos Reagentes
+                                        </button>
+                                        <button onclick="startGame('avancado')" class="w-full bg-primary hover:bg-primary/80 text-white py-3 px-6 rounded-lg font-semibold transition-colors">
+                                            🔴 Avançado - Reagente Limitante
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div id="gamePlay" class="hidden space-y-6">
+                                    <div class="text-center">
+                                        <h3 class="text-xl font-semibold mb-4">Reação Atual:</h3>
+                                        <div id="currentReaction" class="text-2xl font-mono bg-gray-100 dark:bg-gray-700 p-4 rounded-lg"></div>
+                                    </div>
+
+                                    <div class="space-y-4">
+                                        <div id="gameChallenge" class="bg-blue-50 dark:bg-blue-900/30 p-4 rounded-lg"></div>
+                                        
+                                        <div class="space-y-3">
+                                            <label class="block text-sm font-semibold">Sua Resposta:</label>
+                                            <input type="number" id="playerAnswer" step="0.001" class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg text-base dark:bg-gray-700" placeholder="Digite sua resposta">
+                                            <button onclick="submitAnswer()" class="w-full bg-secondary hover:bg-secondary/80 text-white py-3 px-6 rounded-lg font-semibold transition-colors">
+                                                ⚔️ Atacar!
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <div id="gameResult" class="hidden"></div>
+                                </div>
+
+                                <div id="gameEnd" class="hidden text-center space-y-6">
+                                    <h3 class="text-3xl font-bold" id="gameEndTitle"></h3>
+                                    <div id="finalScore" class="text-xl"></div>
+                                    <button onclick="resetGame()" class="bg-accent hover:bg-accent/80 text-white py-3 px-6 rounded-lg font-semibold transition-colors">
+                                        🔄 Jogar Novamente
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Calculadora Integrada -->
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg">
+                            <h3 class="text-xl font-bold mb-4 text-center text-secondary">🧮 Calculadora Química</h3>
+                            
+                            <div class="space-y-4">
+                                <div>
+                                    <label class="block text-sm font-semibold mb-2">Conversões:</label>
+                                    <div class="grid grid-cols-2 gap-2">
+                                        <input type="number" id="molInput" placeholder="Mols" class="p-2 border rounded text-base dark:bg-gray-700">
+                                        <input type="number" id="massInput" placeholder="Massa (g)" class="p-2 border rounded text-base dark:bg-gray-700">
+                                        <input type="number" id="molarMassInput" placeholder="M.M. (g/mol)" class="p-2 border rounded text-base dark:bg-gray-700">
+                                        <input type="number" id="volumeInput" placeholder="Volume (L)" class="p-2 border rounded text-base dark:bg-gray-700">
+                                    </div>
+                                    <button onclick="calculateConversions()" class="w-full mt-2 bg-warning hover:bg-warning/80 text-white py-2 px-4 rounded transition-colors">
+                                        Calcular
+                                    </button>
+                                </div>
+
+                                <div class="border-t pt-4">
+                                    <h4 class="font-semibold mb-2">📋 Fórmulas Importantes:</h4>
+                                    <div class="text-sm space-y-1 bg-gray-50 dark:bg-gray-700 p-3 rounded">
+                                        <div>n = m / MM</div>
+                                        <div>n = V / 22,4 (CNTP)</div>
+                                        <div>m = n × MM</div>
+                                        <div>V = n × 22,4 (CNTP)</div>
+                                    </div>
+                                </div>
+
+                                <div id="calculatorResult" class="text-sm bg-blue-50 dark:bg-blue-900/30 p-3 rounded hidden"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Experimentos -->
+        <section id="experimentos" class="py-16">
+            <div class="container mx-auto px-4">
+                <h2 class="text-4xl font-bold text-center mb-12 text-primary dark:text-accent">🧪 Experimentos</h2>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg">
+                        <h3 class="text-xl font-semibold mb-4 text-secondary">Experimento 1: Geração de H₂</h3>
+                        <div class="space-y-3">
+                            <p class="text-sm text-gray-600 dark:text-gray-400">Zn + 2HCl → ZnCl₂ + H₂</p>
+                            <div class="text-sm">
+                                <strong>Materiais:</strong>
+                                <ul class="list-disc list-inside text-gray-600 dark:text-gray-400 mt-1">
+                                    <li>Zinco metálico</li>
+                                    <li>Ácido clorídrico</li>
+                                    <li>Proveta graduada</li>
+                                    <li>Tubo de ensaio</li>
+                                </ul>
+                            </div>
+                            <div class="bg-yellow-50 dark:bg-yellow-900/30 p-3 rounded text-sm">
+                                <strong>⚠️ Segurança:</strong> Use óculos de proteção e trabalhe em capela
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg">
+                        <h3 class="text-xl font-semibold mb-4 text-secondary">Experimento 2: Bicarbonato + Vinagre</h3>
+                        <div class="space-y-3">
+                            <p class="text-sm text-gray-600 dark:text-gray-400">NaHCO₃ + CH₃COOH → CH₃COONa + H₂O + CO₂</p>
+                            <div class="text-sm">
+                                <strong>Materiais:</strong>
+                                <ul class="list-disc list-inside text-gray-600 dark:text-gray-400 mt-1">
+                                    <li>Bicarbonato de sódio</li>
+                                    <li>Ácido acético (vinagre)</li>
+                                    <li>Balança analítica</li>
+                                    <li>Recipiente graduado</li>
+                                </ul>
+                            </div>
+                            <div class="bg-green-50 dark:bg-green-900/30 p-3 rounded text-sm">
+                                <strong>✅ Objetivo:</strong> Calcular rendimento de CO₂
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg">
+                        <h3 class="text-xl font-semibold mb-4 text-secondary">Experimento 3: Rendimento</h3>
+                        <div class="space-y-3">
+                            <p class="text-sm font-semibold">Cálculo de Rendimento Percentual</p>
+                            <div class="text-sm space-y-2">
+                                <div class="bg-gray-50 dark:bg-gray-700 p-2 rounded">
+                                    Rendimento % = (Produto Real / Produto Teórico) × 100
+                                </div>
+                                <p class="text-gray-600 dark:text-gray-400">
+                                    Compare os resultados experimentais com os cálculos teóricos para determinar a eficiência da reação.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Quiz -->
+        <section id="exercicios" class="py-16 bg-gray-50 dark:bg-gray-900">
+            <div class="container mx-auto px-4">
+                <h2 class="text-4xl font-bold text-center mb-12 text-primary dark:text-accent">📝 Quiz de Estequiometria</h2>
+                
+                <div class="max-w-3xl mx-auto">
+                    <div class="bg-white dark:bg-gray-800 rounded-lg p-8 shadow-lg">
+                        <div id="quizContainer">
+                            <div class="mb-6">
+                                <div class="flex justify-between items-center mb-4">
+                                    <span class="text-lg font-semibold">Questão <span id="currentQuestion">1</span> de <span id="totalQuestions">5</span></span>
+                                    <span class="bg-secondary text-white px-3 py-1 rounded-full text-sm">Pontos: <span id="quizScore">0</span></span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div id="progressBar" class="bg-accent h-2 rounded-full transition-all duration-300" style="width: 20%"></div>
+                                </div>
+                            </div>
+
+                            <div id="questionArea">
+                                <h3 id="questionText" class="text-xl font-semibold mb-6"></h3>
+                                <div id="optionsArea" class="space-y-3"></div>
+                                <button id="nextButton" onclick="nextQuestion()" class="hidden mt-6 bg-secondary hover:bg-secondary/80 text-white py-3 px-6 rounded-lg font-semibold transition-colors">
+                                    Próxima Questão
+                                </button>
+                            </div>
+
+                            <div id="quizResults" class="hidden text-center space-y-6">
+                                <h3 class="text-3xl font-bold text-accent">Quiz Concluído! 🎉</h3>
+                                <div class="text-xl">
+                                    Sua pontuação: <span id="finalQuizScore" class="font-bold text-primary"></span>
+                                </div>
+                                <div id="quizFeedback" class="text-lg"></div>
+                                <button onclick="restartQuiz()" class="bg-accent hover:bg-accent/80 text-white py-3 px-6 rounded-lg font-semibold transition-colors">
+                                    🔄 Refazer Quiz
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Conexões Interdisciplinares -->
+        <section id="conexoes" class="py-16">
+            <div class="container mx-auto px-4">
+                <h2 class="text-4xl font-bold text-center mb-12 text-primary dark:text-accent">🔗 Conexões Interdisciplinares</h2>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="space-y-6">
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg">
+                            <h3 class="text-xl font-semibold mb-3 text-secondary">⚡ Física</h3>
+                            <p class="text-gray-600 dark:text-gray-400">
+                                Relações massa-energia, leis dos gases ideais, termodinâmica e cinética molecular aplicadas aos cálculos estequiométricos.
+                            </p>
+                        </div>
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg">
+                            <h3 class="text-xl font-semibold mb-3 text-primary">🏭 Engenharia Química</h3>
+                            <p class="text-gray-600 dark:text-gray-400">
+                                Planejamento de processos industriais, otimização de reatores, análise de rendimento e controle de qualidade.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="space-y-6">
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg">
+                            <h3 class="text-xl font-semibold mb-3 text-accent">🌍 Meio Ambiente</h3>
+                            <p class="text-gray-600 dark:text-gray-400">
+                                Controle de emissões, tratamento de resíduos, purificação de água e análise de impacto ambiental.
+                            </p>
+                        </div>
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg">
+                            <h3 class="text-xl font-semibold mb-3 text-warning">🧬 Biologia</h3>
+                            <p class="text-gray-600 dark:text-gray-400">
+                                Metabolismo celular, fotossíntese, respiração, enzimologia e balanceamento de processos bioquímicos.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Curiosidades -->
+        <section id="curiosidades" class="py-16 bg-gradient-to-br from-accent/10 to-warning/10">
+            <div class="container mx-auto px-4">
+                <h2 class="text-4xl font-bold text-center mb-12 text-primary dark:text-accent">🚀 Curiosidades e Avanços Recentes</h2>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg">
+                        <div class="text-4xl mb-4 text-center">🖨️</div>
+                        <h3 class="text-xl font-semibold mb-3 text-center text-secondary">Impressão 3D Química</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-center">
+                            Estequiometria aplicada em impressoras 3D de materiais químicos para síntese precisa de compostos farmacêuticos.
+                        </p>
+                    </div>
+                    <div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg">
+                        <div class="text-4xl mb-4 text-center">🌱</div>
+                        <h3 class="text-xl font-semibold mb-3 text-center text-accent">Combustíveis Verdes</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-center">
+                            Cálculos estequiométricos otimizam a produção de hidrogênio verde e biocombustíveis sustentáveis.
+                        </p>
+                    </div>
+                    <div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg">
+                        <div class="text-4xl mb-4 text-center">⚗️</div>
+                        <h3 class="text-xl font-semibold mb-3 text-center text-primary">Síntese Avançada</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-center">
+                            Novos métodos de síntese com catalisadores inteligentes aumentam rendimentos para mais de 98%.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer id="contato" class="bg-gray-900 text-white py-16">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4 text-accent">Batalha das Moléculas</h3>
+                    <p class="text-gray-400">
+                        Plataforma educativa interativa para o ensino de estequiometria e cálculos químicos.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">📚 Referências</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li>Brown, T. L. et al. Química: A Ciência Central</li>
+                        <li>Atkins, P. Princípios de Química</li>
+                        <li>Chang, R. Química Geral</li>
+                        <li>IUPAC - União Internacional de Química</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">📧 Contato</h4>
+                    <div class="space-y-3">
+                        <input type="email" placeholder="Seu e-mail" class="w-full p-3 rounded bg-gray-800 border border-gray-700 text-base">
+                        <textarea placeholder="Sua mensagem ou sugestão" class="w-full p-3 rounded bg-gray-800 border border-gray-700 text-base h-24"></textarea>
+                        <button class="w-full bg-accent hover:bg-accent/80 text-white py-3 px-6 rounded font-semibold transition-colors">
+                            Enviar Mensagem
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 Batalha das Moléculas. Projeto educativo para ensino de Estequiometria.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Dark mode detection
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+
+        // Game Logic
+        let gameState = {
+            level: '',
+            playerHealth: 100,
+            enemyHealth: 100,
+            score: 0,
+            currentChallenge: null,
+            turn: 1
+        };
+
+        const reactions = {
+            basico: [
+                { equation: "H₂ + Cl₂ → 2HCl", ratio: [1, 1, 2], masses: [2, 71, 73] },
+                { equation: "N₂ + 3H₂ → 2NH₃", ratio: [1, 3, 2], masses: [28, 6, 34] },
+                { equation: "2Na + Cl₂ → 2NaCl", ratio: [2, 1, 2], masses: [46, 71, 117] }
+            ],
+            intermediario: [
+                { equation: "C + O₂ → CO₂", ratio: [1, 1, 1], masses: [12, 32, 44] },
+                { equation: "2Mg + O₂ → 2MgO", ratio: [2, 1, 2], masses: [48, 32, 80] },
+                { equation: "CH₄ + 2O₂ → CO₂ + 2H₂O", ratio: [1, 2, 1, 2], masses: [16, 64, 44, 36] }
+            ],
+            avancado: [
+                { equation: "3Fe + 2O₂ → Fe₃O₄", ratio: [3, 2, 1], masses: [168, 64, 232] },
+                { equation: "2Al + 3CuSO₄ → Al₂(SO₄)₃ + 3Cu", ratio: [2, 3, 1, 3], masses: [54, 479, 342, 191] }
+            ]
+        };
+
+        function startGame(level) {
+            gameState.level = level;
+            gameState.playerHealth = 100;
+            gameState.enemyHealth = 100;
+            gameState.score = 0;
+            gameState.turn = 1;
+            
+            document.getElementById('gameStart').classList.add('hidden');
+            document.getElementById('gamePlay').classList.remove('hidden');
+            
+            updateGameDisplay();
+            generateChallenge();
+        }
+
+        function generateChallenge() {
+            const levelReactions = reactions[gameState.level];
+            const reaction = levelReactions[Math.floor(Math.random() * levelReactions.length)];
+            
+            document.getElementById('currentReaction').textContent = reaction.equation;
+            
+            const reagentIndex = Math.floor(Math.random() * (reaction.ratio.length - 1));
+            const productIndex = reaction.ratio.length - 1;
+            const givenAmount = Math.floor(Math.random() * 10 + 1);
+            
+            const correctAnswer = (givenAmount * reaction.ratio[productIndex] * reaction.masses[productIndex]) / 
+                                 (reaction.ratio[reagentIndex] * reaction.masses[reagentIndex]);
+            
+            gameState.currentChallenge = {
+                reaction: reaction,
+                reagentIndex: reagentIndex,
+                productIndex: productIndex,
+                givenAmount: givenAmount,
+                correctAnswer: correctAnswer.toFixed(3)
+            };
+            
+            const reagentName = reaction.equation.split(' ')[reagentIndex === 0 ? 0 : reagentIndex * 2];
+            const productName = reaction.equation.split('→')[1].trim().split(' ')[productIndex === reaction.ratio.length - 1 ? 0 : (productIndex - reagentIndex - 1) * 2];
+            
+            document.getElementById('gameChallenge').innerHTML = `
+                <strong>🎯 Desafio do Turno ${gameState.turn}:</strong><br>
+                Você tem <strong>${givenAmount} g</strong> de reagente.<br>
+                Quantos gramas de produto serão formados?<br>
+                <small class="text-gray-600 dark:text-gray-400">Responda com 3 casas decimais</small>
+            `;
+            
+            document.getElementById('playerAnswer').value = '';
+            document.getElementById('gameResult').classList.add('hidden');
+        }
+
+        function submitAnswer() {
+            const userAnswer = parseFloat(document.getElementById('playerAnswer').value);
+            const correctAnswer = parseFloat(gameState.currentChallenge.correctAnswer);
+            
+            if (Math.abs(userAnswer - correctAnswer) < 0.01) {
+                // Resposta correta
+                const damage = Math.floor(Math.random() * 25 + 15);
+                gameState.enemyHealth -= damage;
+                gameState.score += 100;
+                
+                document.getElementById('gameResult').innerHTML = `
+                    <div class="bg-green-100 dark:bg-green-900/30 p-4 rounded-lg animate-pulse">
+                        <h4 class="font-bold text-green-800 dark:text-green-200">✅ Ataque Bem-sucedido!</h4>
+                        <p>Resposta correta: ${correctAnswer}g</p>
+                        <p>Dano causado: ${damage} pontos</p>
+                    </div>
+                `;
+                
+                // Animação de ataque
+                document.getElementById('enemyHealth').classList.add('animate-attack');
+                setTimeout(() => {
+                    document.getElementById('enemyHealth').classList.remove('animate-attack');
+                }, 500);
+                
+            } else {
+                // Resposta incorreta
+                const damage = Math.floor(Math.random() * 20 + 10);
+                gameState.playerHealth -= damage;
+                
+                document.getElementById('gameResult').innerHTML = `
+                    <div class="bg-red-100 dark:bg-red-900/30 p-4 rounded-lg">
+                        <h4 class="font-bold text-red-800 dark:text-red-200">❌ Ataque Falhado!</h4>
+                        <p>Resposta correta era: ${correctAnswer}g</p>
+                        <p>Sua resposta: ${userAnswer || 'não informada'}</p>
+                        <p>Dano recebido: ${damage} pontos</p>
+                        <div class="mt-2 text-sm bg-yellow-50 dark:bg-yellow-900/30 p-2 rounded">
+                            <strong>💡 Explicação:</strong> Use a proporção estequiométrica da reação balanceada.
+                        </div>
+                    </div>
+                `;
+                
+                // Animação de dano recebido
+                document.getElementById('playerHealth').classList.add('animate-attack');
+                setTimeout(() => {
+                    document.getElementById('playerHealth').classList.remove('animate-attack');
+                }, 500);
+            }
+            
+            document.getElementById('gameResult').classList.remove('hidden');
+            updateGameDisplay();
+            
+            // Verificar fim de jogo
+            if (gameState.playerHealth <= 0 || gameState.enemyHealth <= 0) {
+                setTimeout(endGame, 2000);
+            } else {
+                gameState.turn++;
+                setTimeout(() => {
+                    generateChallenge();
+                }, 3000);
+            }
+        }
+
+        function updateGameDisplay() {
+            document.getElementById('playerHealth').style.width = Math.max(0, gameState.playerHealth) + '%';
+            document.getElementById('enemyHealth').style.width = Math.max(0, gameState.enemyHealth) + '%';
+            document.getElementById('playerHealthText').textContent = `${Math.max(0, gameState.playerHealth)}/100`;
+            document.getElementById('enemyHealthText').textContent = `${Math.max(0, gameState.enemyHealth)}/100`;
+            document.getElementById('gameScore').textContent = gameState.score;
+        }
+
+        function endGame() {
+            document.getElementById('gamePlay').classList.add('hidden');
+            document.getElementById('gameEnd').classList.remove('hidden');
+            
+            if (gameState.playerHealth <= 0) {
+                document.getElementById('gameEndTitle').textContent = '💀 Derrota!';
+                document.getElementById('gameEndTitle').className = 'text-3xl font-bold text-red-600';
+            } else {
+                document.getElementById('gameEndTitle').textContent = '🏆 Vitória!';
+                document.getElementById('gameEndTitle').className = 'text-3xl font-bold text-green-600';
+                gameState.score += gameState.playerHealth * 10; // Bônus pela vida restante
+            }
+            
+            document.getElementById('finalScore').textContent = `Pontuação Final: ${gameState.score} pontos`;
+        }
+
+        function resetGame() {
+            document.getElementById('gameEnd').classList.add('hidden');
+            document.getElementById('gameStart').classList.remove('hidden');
+        }
+
+        // Calculator Logic
+        function calculateConversions() {
+            const mol = parseFloat(document.getElementById('molInput').value) || 0;
+            const mass = parseFloat(document.getElementById('massInput').value) || 0;
+            const molarMass = parseFloat(document.getElementById('molarMassInput').value) || 0;
+            const volume = parseFloat(document.getElementById('volumeInput').value) || 0;
+            
+            let result = '';
+            
+            if (mol && molarMass) {
+                const calculatedMass = mol * molarMass;
+                const calculatedVolume = mol * 22.4;
+                result += `Massa: ${calculatedMass.toFixed(3)} g<br>`;
+                result += `Volume (CNTP): ${calculatedVolume.toFixed(3)} L<br>`;
+            }
+            
+            if (mass && molarMass) {
+                const calculatedMol = mass / molarMass;
+                const calculatedVolume = calculatedMol * 22.4;
+                result += `Mols: ${calculatedMol.toFixed(3)} mol<br>`;
+                result += `Volume (CNTP): ${calculatedVolume.toFixed(3)} L<br>`;
+            }
+            
+            if (volume) {
+                const calculatedMol = volume / 22.4;
+                if (molarMass) {
+                    const calculatedMass = calculatedMol * molarMass;
+                    result += `Mols: ${calculatedMol.toFixed(3)} mol<br>`;
+                    result += `Massa: ${calculatedMass.toFixed(3)} g<br>`;
+                }
+            }
+            
+            if (result) {
+                document.getElementById('calculatorResult').innerHTML = result;
+                document.getElementById('calculatorResult').classList.remove('hidden');
+            }
+        }
+
+        // Quiz Logic
+        const quizQuestions = [
+            {
+                question: "Quantos gramas de H₂O são produzidos quando 4g de H₂ reagem completamente com O₂?",
+                options: ["18g", "36g", "9g", "72g"],
+                correct: 1,
+                explanation: "2H₂ + O₂ → 2H₂O. 4g H₂ = 2 mol. Proporção 2:2, logo 2 mol H₂O = 36g"
+            },
+            {
+                question: "Em uma reação balanceada A + 2B → C, se temos 1 mol de A e 1 mol de B, qual é o reagente limitante?",
+                options: ["A", "B", "C", "Não há reagente limitante"],
+                correct: 1,
+                explanation: "B é limitante porque precisa de 2 mol de B para 1 mol de A, mas só temos 1 mol de B"
+            },
+            {
+                question: "Qual é a massa molar do CO₂?",
+                options: ["28 g/mol", "44 g/mol", "32 g/mol", "16 g/mol"],
+                correct: 1,
+                explanation: "CO₂: C(12) + 2×O(16) = 12 + 32 = 44 g/mol"
+            },
+            {
+                question: "Em CNTP, 1 mol de qualquer gás ocupa:",
+                options: ["22,4 L", "24,5 L", "11,2 L", "44,8 L"],
+                correct: 0,
+                explanation: "Em Condições Normais de Temperatura e Pressão, 1 mol de gás = 22,4 L"
+            },
+            {
+                question: "Se o rendimento real de uma reação foi 45g e o teórico era 50g, qual o rendimento percentual?",
+                options: ["90%", "85%", "95%", "80%"],
+                correct: 0,
+                explanation: "Rendimento % = (45/50) × 100 = 90%"
+            }
+        ];
+
+        let quizState = {
+            currentQuestionIndex: 0,
+            score: 0,
+            selectedAnswer: null
+        };
+
+        function loadQuestion() {
+            const question = quizQuestions[quizState.currentQuestionIndex];
+            document.getElementById('questionText').textContent = question.question;
+            document.getElementById('currentQuestion').textContent = quizState.currentQuestionIndex + 1;
+            document.getElementById('totalQuestions').textContent = quizQuestions.length;
+            document.getElementById('progressBar').style.width = ((quizState.currentQuestionIndex + 1) / quizQuestions.length * 100) + '%';
+            
+            const optionsArea = document.getElementById('optionsArea');
+            optionsArea.innerHTML = '';
+            
+            question.options.forEach((option, index) => {
+                const button = document.createElement('button');
+                button.className = 'w-full p-4 text-left border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors';
+                button.textContent = option;
+                button.onclick = () => selectAnswer(index);
+                optionsArea.appendChild(button);
+            });
+            
+            document.getElementById('nextButton').classList.add('hidden');
+        }
+
+        function selectAnswer(selectedIndex) {
+            quizState.selectedAnswer = selectedIndex;
+            const question = quizQuestions[quizState.currentQuestionIndex];
+            const buttons = document.getElementById('optionsArea').children;
+            
+            for (let i = 0; i < buttons.length; i++) {
+                buttons[i].onclick = null;
+                if (i === question.correct) {
+                    buttons[i].classList.add('bg-green-100', 'dark:bg-green-900', 'border-green-500');
+                } else if (i === selectedIndex && i !== question.correct) {
+                    buttons[i].classList.add('bg-red-100', 'dark:bg-red-900', 'border-red-500');
+                }
+            }
+            
+            if (selectedIndex === question.correct) {
+                quizState.score += 20;
+            }
+            
+            // Mostrar explicação
+            const explanation = document.createElement('div');
+            explanation.className = 'mt-4 p-4 bg-blue-50 dark:bg-blue-900/30 rounded-lg';
+            explanation.innerHTML = `<strong>💡 Explicação:</strong> ${question.explanation}`;
+            document.getElementById('optionsArea').appendChild(explanation);
+            
+            document.getElementById('quizScore').textContent = quizState.score;
+            document.getElementById('nextButton').classList.remove('hidden');
+        }
+
+        function nextQuestion() {
+            quizState.currentQuestionIndex++;
+            
+            if (quizState.currentQuestionIndex < quizQuestions.length) {
+                loadQuestion();
+            } else {
+                showQuizResults();
+            }
+        }
+
+        function showQuizResults() {
+            document.getElementById('questionArea').classList.add('hidden');
+            document.getElementById('quizResults').classList.remove('hidden');
+            
+            document.getElementById('finalQuizScore').textContent = `${quizState.score}/100`;
+            
+            let feedback = '';
+            if (quizState.score >= 80) {
+                feedback = '🏆 Excelente! Você domina os conceitos de estequiometria!';
+            } else if (quizState.score >= 60) {
+                feedback = '👍 Bom trabalho! Continue estudando para aperfeiçoar seus conhecimentos.';
+            } else {
+                feedback = '📚 Continue estudando! Revise os conceitos básicos de estequiometria.';
+            }
+            
+            document.getElementById('quizFeedback').textContent = feedback;
+        }
+
+        function restartQuiz() {
+            quizState.currentQuestionIndex = 0;
+            quizState.score = 0;
+            quizState.selectedAnswer = null;
+            
+            document.getElementById('quizResults').classList.add('hidden');
+            document.getElementById('questionArea').classList.remove('hidden');
+            document.getElementById('quizScore').textContent = '0';
+            
+            loadQuestion();
+        }
+
+        // Initialize quiz
+        loadQuestion();
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
